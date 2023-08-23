@@ -1,0 +1,22 @@
+{% load filters %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task List</title>
+</head>
+<body>
+    <h1>Task List</h1>
+    <ul>
+        {% for day in days %}
+            <li>{{ day }}</li>
+            <ul>
+            {% for e in events %}
+                {% if e.repeat|dict_key:day %}
+                <li>{{ e.description }}</li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+</body>
+</html>
