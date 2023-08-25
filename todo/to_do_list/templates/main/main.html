@@ -1,22 +1,57 @@
-{% load filters %}
 <!DOCTYPE html>
 <html>
 <head>
+    {% load filters %}
+    {% load bootstrap5 %}
+    {% load static %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    
     <title>Task List</title>
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h1>Task List</h1>
-    <ul>
-        {% for day in days %}
-            <li>{{ day }}</li>
-            <ul>
-            {% for e in events %}
+    
+    <div class="card-big-shadow">
+        <button class="card card-just-text" data-background="color" data-color="yellow" data-radius="none" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="position: fixed; bottom: 10px; right: 20px; padding: 50px; width: 150px; height: 150px;">
+            <div class="content" style="display: flex; justify-content: center; align-items: center;height: 300px; padding: 0%;">
+                <h1 style="position: absolute;top: 50%; left: 50%;transform: translate(-50%, -50%);"> + </h1>
+            </div>
+        </button> <!-- end card -->
+    </div>
+
+    {% include "../forms/event_form.html" with form=form %}
+
+    {% for day in days %}
+    <div class="container bootstrap snippets bootdeys" style="background-color: antiquewhite;border:2px solid beige; border-radius: 5px;">
+        <div class="row">
+            <div class="card card-just-text" data-background="color" data-color={{color}} data-radius="none">
+                <div class="content">
+                    <h1 class="title">{{day}}</h1>
+                </div>
+            </div> <!-- end card -->
+        </div>
+        <div class="row">
+        {% for e in events %}
                 {% if e.repeat|dict_key:day %}
-                <li>{{ e.description }}</li>
+                    <div class="col-md-4 col-sm-6 content-card">
+                        <div class="card-big-shadow">
+                            <div class="card card-just-text" data-background="color" data-color={{e.color}} data-radius="none">
+                                <div class="content">
+                                    <h6 class="category">{{e.day}}</h6>
+                                    <h4 class="title">{{ e.name }}</a></h4>
+                                    <p class="description">{{e.description}}</p>
+                                    <h6 class="category">Hour: {{e.hour}}, Duration:{{e.dur}}</h6>
+                                </div>
+                            </div> <!-- end card -->
+                        </div>
+                    </div>
                 {% endif %}
             {% endfor %}
-            </ul>
-        {% endfor %}
-    </ul>
+        </div>
+    </div>
+    {% endfor %}
+    <script src="{% static 'js/modal.js' %}"></script>
 </body>
 </html>
