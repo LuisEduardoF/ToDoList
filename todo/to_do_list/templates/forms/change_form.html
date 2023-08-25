@@ -3,9 +3,9 @@
 {% load crispy_forms_tags %}
 {% load static %}
 <link href="{% static 'css/form_style.css' %}" rel="stylesheet">
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="changeModal" tabindex="-1" aria-labelledby="changeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content" id="postit" style="background-color: #ffe28c;">
+      <div class="modal-content" id="postit2" style="background-color: #ffe28c;">
         <div class="modal-header border-0">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -29,8 +29,8 @@
             </form>
         </div>
         <div class="modal-footer border-0">
-          <button type="button" id="close" class="btn btn-outline-danger" data-bs-dismiss="modal">Erase</button>
-          <button type="button" id="submit" onclick="submit()" class="btn btn-outline-primary">Add Note</button>
+            <button type="button" id="close" class="btn btn-outline-danger" data-bs-dismiss="modal">Erase</button>
+            <button type="button" id="submit" onclick="change_note()" class="btn btn-outline-primary">Change Note</button></div>
         </div>
       </div>
     </div>

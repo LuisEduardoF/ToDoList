@@ -8,29 +8,22 @@ from datetime import date
 
 # Create your views here.
 class Event(models.Model):
-    hour = models.DateTimeField(verbose_name="")
-    day = models.DateTimeField(verbose_name="")
-    dur = models.DurationField(verbose_name="")
-    name = models.CharField(max_length=10, verbose_name="")
+    date = models.DateTimeField(verbose_name="", default="2000-11-29T11:11", unique=True)
+    name = models.CharField(max_length=50, verbose_name="")
     description = models.CharField(max_length=200, verbose_name="")
-    color = models.CharField(max_length=200, default="", verbose_name="")
-
-
-class Routine(Event):
-    repeat = models.JSONField(default=dict)
-    
+    color = models.CharField(max_length=200, default="Yellow", verbose_name="")
+    id_user = models.IntegerField(primary_key=True)
+    # Testing
     @classmethod
-    def create(cls, name, day, hour, description, repeat):
-        rtn = cls(name = name, day=day, hour=hour, description=description, repeat=repeat)
-        return rtn
-
-class Schedule(Event):
-
-    @classmethod
-    def create(cls, name, day, hour):
-        sch = cls(name = name, day=day, hour=hour, description=description)
-        return sch
+    def create(cls, id_user, name, date, description, repeat):
+        event = cls(id_user=id_user, name=name, date=date, description=description)
+        return event
     
 class Day(models.Model):
-    datetime = models.TimeField()
+    datetime = models.DateField(primary_key = True, default="2000-11-29")
     color = models.CharField(max_length=200)
+    
+    @classmethod
+    def create(cls, datetime, color):
+        day = cls(datetime=datetime, color=color)
+        return day

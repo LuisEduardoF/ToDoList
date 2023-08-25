@@ -57,6 +57,7 @@ body{margin-top:20px;}
     top: 0;
     z-index: 0;
 }
+
 h4, .h4 {
     font-size: 1.5em;
     font-weight: 600;
@@ -78,6 +79,14 @@ a:hover, a:focus {
     text-decoration: none;
 }
 
+#event {
+    border: 2px solid transparent;
+    transition: border-color 0.1s; /* Add a smooth transition effect */
+}
+
+#event:hover {
+    border-color: whitesmoke; 
+}
 /*======== COLORS ===========*/
 .card[data-color="blue"] {
     background: #b8d8d8;
