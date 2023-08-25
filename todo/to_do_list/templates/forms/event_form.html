@@ -1,24 +1,41 @@
 <!-- your_app_name/templates/person_form.html -->
 
 {% load crispy_forms_tags %}
-
+{% load static %}
+<link href="{% static 'css/form_style.css' %}" rel="stylesheet">
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content" style="background-color: #ffe28c;">
+      <div class="modal-content" id="postit" style="background-color: #ffe28c;">
         <div class="modal-header border-0">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Submit</button>
+                <div class="mb-3">
+                  {{ form.name|as_crispy_field }}
+                </div>
+                <div class="row">
+                  <div class="col">
+                    {{ form.day|as_crispy_field }}
+                  </div>
+                  <div class="col">
+                    {{ form.hour|as_crispy_field }}
+                  </div>
+                </div>
+                <div class="mb-3">
+                  {{ form.description|as_crispy_field }}
+                </div>
+                <div class="mb-3">
+                  {{ form.color|as_crispy_field }}
+                </div>
             </form>
         </div>
         <div class="modal-footer border-0">
           <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-primary">Save changes</button>
+          <button type="submit" class="btn btn-outline-primary">Save changes</button>
         </div>
       </div>
     </div>
-  </div>
+    <script src="{% static 'js/change.js' %}"></script>
+</div>

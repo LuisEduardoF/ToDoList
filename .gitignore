@@ -5919,3 +5919,7 @@ myenv/lib/python3.10/site-packages/typing_extensions-4.7.1.dist-info/LICENSE
 myenv/lib/python3.10/site-packages/typing_extensions-4.7.1.dist-info/METADATA
 myenv/lib/python3.10/site-packages/typing_extensions-4.7.1.dist-info/RECORD
 myenv/lib/python3.10/site-packages/typing_extensions-4.7.1.dist-info/WHEEL
+todo/to_do_list/__pycache__/forms.cpython-310.pyc
+todo/to_do_list/__pycache__/models.cpython-310.pyc
+todo/to_do_list/__pycache__/urls.cpython-310.pyc
+todo/to_do_list/__pycache__/views.cpython-310.pyc
