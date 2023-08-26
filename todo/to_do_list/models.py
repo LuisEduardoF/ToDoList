@@ -13,6 +13,7 @@ class Event(models.Model):
     description = models.CharField(max_length=200, verbose_name="")
     color = models.CharField(max_length=200, default="Yellow", verbose_name="")
     id_user = models.IntegerField(primary_key=True)
+    
     # Testing
     @classmethod
     def create(cls, id_user, name, date, description, repeat):

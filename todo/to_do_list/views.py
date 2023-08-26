@@ -44,7 +44,7 @@ def change_data(request):
         print(res)
         id = res["id"]
         print("Entrou em Change")
-        Event.objects.filter(id=id).delete()
+        #Event.objects.filter(id=id).delete()
         return JsonResponse({'message': 'Data received successfully'})
     else:
         return JsonResponse({'message': 'Data not received successfully'})

@@ -1,14 +1,14 @@
 function change() {
-
-    var x = document.getElementById("colors").value;
-    var modal2 = document.getElementById("postit2");
+    var x = document.getElementById("postit2").querySelector("#colors").value;
     colors = {"yellow": "#ffe28c", "green":"#d5e5a3", "brown":"#d6c1ab", "blue":"#b8d8d8", "purple":"#baa9ba", "orange":"#ff8f5e"}
-    modal2.style.backgroundColor = colors[x];
+    document.getElementById("postit2").style.backgroundColor = colors[x];
 
-    var x = document.getElementById("colors").value;
-    var modal1 = document.getElementById("postit");
+    console.log(x)
+
+    var x = document.getElementById("postit").querySelector("#colors").value;
     colors = {"yellow": "#ffe28c", "green":"#d5e5a3", "brown":"#d6c1ab", "blue":"#b8d8d8", "purple":"#baa9ba", "orange":"#ff8f5e"}
-    modal1.style.backgroundColor = colors[x];   
+    document.getElementById("postit").style.backgroundColor = colors[x]; 
+      
 }
 
 function submit() {
@@ -34,7 +34,7 @@ function change_note() {
             date: $("#id_date").val(),
             description: $("#id_description").val(),
             color: $("#colors").val(),
-            id: $("#id").val(),
+            id: $("span[name=id]").val(),
         },
         dataType: "json",
     });
