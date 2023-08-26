@@ -1,7 +1,7 @@
 migrations/
 __pycache__/
 db.sqlite3
-myenv/
+venv/
 myenv/lib64
 myenv/pyvenv.cfg
 myenv/bin/activate

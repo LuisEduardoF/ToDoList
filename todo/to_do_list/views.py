@@ -14,8 +14,10 @@ def getRandRGB():
     return random.choice(["green", "yellow", "brown", "blue", "purple", "orange"])
 
 def event_list(request):
-    events = [{"id": e["id_user"], "date":e["date"].date(), "name":e["name"], "day":e["date"].strftime("%d/%m/%Y"), "hour":e["date"].strftime("%H:%m"), "description":e["description"], "color":e["color"]} for e in Event.objects.all().values()]
+    print(Event.objects.all().values())
+    events = [{"id": str(e["id_user"]), "date":e["date"].date(), "name":e["name"], "day":e["date"].strftime("%d/%m/%Y"), "hour":e["date"].strftime("%H:%m"), "description":e["description"], "color":e["color"]} for e in Event.objects.all().values()]
     days = [{"name":d["datetime"].strftime("%A"),"datetime": d["datetime"],"color": d["color"]} for d in Day.objects.all().values()]
+    
     
     events.sort(key=lambda x: x["hour"])
     days.sort(key=lambda x: x["datetime"])
@@ -31,7 +33,7 @@ def receive_data(request):
             Day.objects.create(datetime=d, color=getRandRGB())
         print("Entrou em Receive", res)
         new_id = len(Event.objects.all().values())
-        Event.objects.create(id_user=new_id+1, date=res["date"], name=res["name"], description=res["description"], color=res["color"])
+        Event.objects.create(date=res["date"], name=res["name"], description=res["description"], color=res["color"])
         return JsonResponse({'message': 'Data received successfully'})
     else:
         return JsonResponse({'message': 'Data not received successfully'})
