@@ -22,16 +22,18 @@ $(".content[id=event]").click(function() {
 
     color = $(this).parent().attr('data-color')
     
-    description = s.slice(3,6-s.length)
+    description = ""
 
-    console.log(s)
-    if(description.length == 0){
-        description = s[3]
+    for (var i = 3; i < s.length; i++) {
+        // Iterate over numeric indexes from 0 to 5, as everyone expects.
+        if(!s[i].includes("Hour:")){
+            description += s[i] + "\n";
+        }
+        else{
+            break;
+        }
     }
-    else{
-        description = description.join("\n")
-    }
-    console.log(description)
+
     // Format the date and time string in the expected format "yyyy-MM-ddThh:mm"
     var formattedDateTime = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}T${timeParts[0]}:${timeParts[1]}`;
     $("input[name=name]#id_name").val(s[2]);
