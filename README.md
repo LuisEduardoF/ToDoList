@@ -2,15 +2,17 @@
 
 A Postit-themed to-do list application built with Python and Django.
 
+![alt text](https://github.com/LuisEduardoF/ToDoList/blob/main/todo/to_do_list/static/image_2023-08-26_003303915.png)
+
 ## About the project
 
 ToDoList is a PostIt-themed to-do list developed to assist users who have numerous notes and need to remember a lot of things.
+
 
 ## Features
 * ➕ **Add new notes:** Include a title, date, description, and choose a color for your note.
 * ➖ **Remove notes:** Easily delete notes you no longer need.
 * ❔  **Change notes:** Modify note details whenever you want.
-
 
 ## Setup
 
