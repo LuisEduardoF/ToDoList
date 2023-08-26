@@ -27,10 +27,9 @@ def receive_data(request):
     if request.method == 'POST':
         res = request.POST.dict()
         d = datetime.strptime(res["date"], "%Y-%m-%dT%H:%M").date()
-        print("D", d)
         if(not Day.objects.filter(datetime=d).exists()):
             Day.objects.create(datetime=d, color=getRandRGB())
-        print("Entrou em Receive")
+        print("Entrou em Receive", res)
         new_id = len(Event.objects.all().values())
         Event.objects.create(id_user=new_id+1, date=res["date"], name=res["name"], description=res["description"], color=res["color"])
         return JsonResponse({'message': 'Data received successfully'})
@@ -41,10 +40,23 @@ def receive_data(request):
 def change_data(request):
     if request.method == 'POST':
         res = request.POST.dict()
+        delete_data(request=request)
+        return receive_data(request=request)
+    else:
+        return JsonResponse({'message': 'Data not received successfully'})
+
+@csrf_exempt
+def delete_data(request):
+    if request.method == 'POST':
+        res = request.POST.dict()
         print(res)
         id = res["id"]
-        print("Entrou em Change")
-        #Event.objects.filter(id=id).delete()
-        return JsonResponse({'message': 'Data received successfully'})
+        print("Entrou em Delete", res)
+        Event.objects.filter(id_user=id).delete()
+        d = datetime.strptime(res["date"], "%Y-%m-%dT%H:%M").date()
+        print("Len of the date:", d, len(Day.objects.filter(datetime=d).all().values()))
+        if(len(Event.objects.filter(date=d).all().values()) == 0):
+            Day.objects.filter(datetime=d).delete()
+        return JsonResponse({'message': 'Data not received successfully'})
     else:
         return JsonResponse({'message': 'Data not received successfully'})

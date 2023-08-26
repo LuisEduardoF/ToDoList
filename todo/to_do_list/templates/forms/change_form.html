@@ -29,12 +29,12 @@
             </form>
         </div>
         <div class="modal-footer border-0">
-            <button type="button" id="close" class="btn btn-outline-danger" data-bs-dismiss="modal">Erase</button>
+            <button type="button" id="close" onclick="delete_note();" class="btn btn-outline-danger" data-bs-dismiss="modal">Erase</button>
             <button type="button" id="submit" onclick="change_note()" class="btn btn-outline-primary">Change Note</button>
         </div>
+        <span name="id" style="display:hidden"></span>
       </div>
     </div>
-    <span name="id" style="display:hidden"></span>
     <script src="{% static 'js/change.js' %}"></script>
     <script src="{% static 'js/modal.js' %}"></script>
 </div>

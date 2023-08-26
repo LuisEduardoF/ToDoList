@@ -1,6 +1,5 @@
 // Load the modal content when the button is clicked
 $("button.card").click(function() {
-    console.log("Button")
     $("input[name=name]#id_name").val("");
     $("input[name=date]#id_date").val("");
     $("select[name=color]").val("yellow").change();
@@ -27,7 +26,8 @@ $(".content[id=event]").click(function() {
     for (var i = 3; i < s.length; i++) {
         // Iterate over numeric indexes from 0 to 5, as everyone expects.
         if(!s[i].includes("Hour:")){
-            description += s[i] + "\n";
+            if(s[i] !== "")
+                description += s[i] + "\n";
         }
         else{
             break;
@@ -40,5 +40,5 @@ $(".content[id=event]").click(function() {
     $("input[name=date]#id_date").val(formattedDateTime);
     $("select[name=color]").val(color).change();
     $("textarea[name=description]").val(description);
-    $("span[name=id]").val(s[-2]);
+    $("span[name=id]").val(s.slice(-2)[0]);
 });
